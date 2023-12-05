@@ -58,6 +58,7 @@ process.stdin.on("data", (chunk) => {
       process.stdout.write(
         `Vous avez perdu! Le nombre à deviner était ${random}\n`
       );
+      process.exit()
       break;
   }
 });
