@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Kittens</title>
+    <link href="/stylesheets/output.css" rel="stylesheet" />
+  </head>
+  <body class="flex flex-col justify-center items-center bg-orange-200 min-h-screen">
+    <header>
+      <h1 class="text-red-300 bg-white font-bold text-6xl shadow-md rounded p-5">My kittens</h1>
+    </header>
+    <main class="flex flex-row m-5 ">
+      <% for(const card of cards) {%>
+        <article class="p-5">
+        <a href="/kittens/<%= card.id %>" class="text-red-300 bg-white text-4xl rounded px-5 text-center"> <%= card.name %></a>
+          <img class="w-50  "src="<%= card.image %>" alt="Image du chat <%= card.name %> ">
+         <!-- <div class="bg-[url('../public<%= card.image %>')]">ddddddd</div> -->
+      </article>
+      <% } %>
+    </main>
+  </body>
+</html>

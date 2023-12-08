@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Kittens || <%= card.name %></title>
+    <link href="/stylesheets/output.css" rel="stylesheet" />
+  </head>
+  <body
+    class="flex flex-col justify-center items-center bg-orange-200 min-h-screen"
+  >
+    <header>
+      <h1
+        class="text-red-300 bg-white font-bold text-6xl shadow-md rounded p-5"
+      >
+        My kittens
+      </h1>
+    </header>
+    <main class="flex flex-row justify-between m-5">
+      <article class="p-5">
+        <h2 class="text-red-300 bg-white text-4xl rounded px-5 text-center">
+          <%= card.name %>
+        </h2>
+        <h2 class="text-red-300 bg-white text-4xl rounded px-5 text-center">
+          <%= card.age %> ans
+        </h2>
+        <h2 class="text-red-300 bg-white text-4xl rounded px-5 text-center">
+          <%= card.description %>
+        </h2>
+        <div class="border-red-300 border-2 border-solid p-5">
+          <img
+            class="w-50"
+            src="<%= card.image %>"
+            alt="Image du chat <%= card.name %> "
+          />
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
