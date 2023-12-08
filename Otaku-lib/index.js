@@ -28,8 +28,8 @@ server.on("request", (request, response) => {
           .replace("{% DESCRIPTION %}", item.description)
           .replace("{% CATEGORY %}", item.category)
           .replace(`{% AUTHOR %}`, item.author)
-          .replace(`{% LINK %}`, `/book?id=${index}`)
-          .replace("{% IMAGE %}", `http://${request.headers.host}${item.image}`);
+          .replace(`{% LINK %}`, `/book?id=${index}`);
+
         return replaceCard;
       };
       for (const [index, item] of books.entries()) {
@@ -44,27 +44,13 @@ server.on("request", (request, response) => {
     response.writeHead(200, "ok", {
       "Content-Type": "text/html",
     });
-  } else if (url.pathname.startsWith("/images/")) {
-    const imagePath = path.join(__dirname, url.pathname);
-    const imageStream = fs.createReadStream(imagePath);
-
-    imageStream.on("open", function () {
-      response.setHeader("Content-Type", "image/png");
-      imageStream.pipe(response);
-    });
-
-    imageStream.on("error", function () {
-      response.writeHead(404, "Not Found");
-      response.end("Image not found");
-    });
-  } else if (url.pathname === '/book') {
+  } else if (url.pathname === "/book") {
     const params = new URLSearchParams(url.search);
-    const id = params.get('id');
-    const item = books[id]
-    
-    response.writeHead(200, 'ok');
+    const id = params.get("id");
+    const item = books[id];
+
+    response.writeHead(200, "ok", {'Content-Type': 'text/html'});
     response.end(item.title);
-    
   } else {
     response.writeHead(404, "Not Found");
     response.end("This page does not exist");
