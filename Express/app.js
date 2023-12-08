@@ -1,6 +1,9 @@
 // Importe le module 'http-errors' pour gérer les erreurs HTTP facilement.
 const createError = require('http-errors');
 
+// Importe le module 'fs' pour lire ou ecrire un fichier
+const fs = require('fs');
+
 // Importe Express.js, un framework pour créer des applications web en Node.js.
 const express = require('express');
 
@@ -38,9 +41,33 @@ app.use(cookieParser());
 // Sert les fichiers statiques (comme CSS, JS, images) dans le dossier 'public'.
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req,res)=>{
-res.render('home', {title: 'My Title'})
+/* --------------------------------- Accueil -------------------------------- */
+app.get('/', (req, res) => {
+  // 1) Lire le fichier data.json
 
-})
+  fs.readFile(`${__dirname}/public/data.json`, 'utf-8', (err, data) => {
+    const books = JSON.parse(data);
 
+    res.render('home', { books });
+  });
+});
+
+/* ------------------------------- Page detail ------------------------------ */
+app.get('/:title', (req, res) => {
+  const params = req.params;
+  console.log(params);
+
+  fs.readFile(`${__dirname}/public/data.json`, 'utf-8', (err, data) => {
+    const books = JSON.parse(data);
+    // 1) Methode 1 Récuperer le livre grace à son index
+    // Il faudra mettre l'index sur le lien du livre
+    // const item = books[params.id];
+
+    const item = books.find((element) => element.title === params.title);
+
+    if (!item) res.render('error');
+
+    res.render('detail', { book: item });
+  });
+});
 module.exports = app;
