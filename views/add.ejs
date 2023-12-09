@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Address Book</title>
+    <link rel="stylesheet" href="/stylesheets/output.css" />
+  </head>
+  <body class="">
+    <head>
+      <h1 class="text-blue-500 text-4xl text-center my-5">My Address Book</h1>
+    </head>
+    <main class="flex justify-center">
+      <form
+        action=""
+        class="bg-blue-300 text-white text-xl flex flex-col justify-center items-start px-20 rounded"
+      >
+        <label for="civility">Civility:</label>
+        <input type="text" id="civility" class="rounded text-blue-400"/>
+        <label for="name">Name:</label>
+        <input type="text" id="name" class="rounded text-blue-400"/>
+        <label for="FirstName">FirstName:</label>
+        <input type="text" id="FirstName" class="rounded text-blue-400" />
+        <button class=" bg-blue-300 p-2 px-6 m-5 rounded border-solid border-2 border-white text-white text-xl">Save</button>
+      </form>
+      <form
+        action=""
+        class="bg-blue-300 text-white text-xl flex flex-col justify-center items-start px-20 py-20 "
+      >
+        <label for="PhoneNumber">PhoneNumber:</label>
+        <input type="tel" id="PhoneNumber" class="rounded text-blue-400" />
+        <label for="Email">Email:</label>
+        <input type="email" id="Email" class="rounded text-blue-400"/>
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" name="birthday" class="rounded text-blue-400"/>
+        <button class=" bg-blue-300 px-4 p-2 m-5 rounded border-solid border-2 border-white text-white text-xl" >Remove</button>
+    </form>
+</main>
+<div class="  flex flex-row gap-64  justify-center items-center my-5 ">
+  <!-- <button class="px-6 bg-blue-300 p-2 rounded text-white text-xl">Save</button> -->
+  <!-- <button class="px-4 bg-blue-300 p-2 rounded text-white text-xl" >Remove</button> -->
+</div>
+  </body>
+</html>
