@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Address Book</title>
+    <link rel="stylesheet" href="/stylesheets/output.css" />
+  </head>
+  <body class="">
+    <head>
+      <h1 class="text-blue-500 text-4xl text-center my-5"><%= detail.civility %> <%= detail.name %> <%= detail.firstName %></h1>
+    </head>
+    <main class="text-center">
+      
+      <div href="" class=" text-blue-300 text-xl flex flex-col justify-center items-center m-5">
+        
+        <p><%= detail.birthday %></p>
+        <p><%= detail.phoneNumber %></p>
+        <p><%= detail.email %></p>
+      </div>
+
+  
+
+      <a href="/" class=" bg-blue-300 px-4 p-2 m-5 rounded border-solid border-2 border-white text-white text-xl" >Go Back</a>
+    </main>
+  </body>
+</html>

@@ -8,15 +8,20 @@
     <head>
       <h1 class="text-blue-500 text-4xl text-center my-5">My Address Book</h1>
     </head>
-    <main class="flex justify-center">
-      <div class="flex flex-row gap-64 justify-center items-center my-5">
-        
-        <button
-          class="bg-blue-300 p-2 px-6 m-5 rounded border-solid border-2 border-white text-white text-xl"
-        >
-          Add Contact
-        </button>
-      </div>
+    <main class="text-center">
+      <% for(const contact of results) {%>
+      <a href="<%= contact.name %>" class="block text-blue-300 text-xl m-5">
+        <%= contact.name %> <%= contact.firstName %>
+      </a>
+
+      <% } %>
+
+      <a
+        href="/add"
+        class="bg-blue-300 p-2 px-6 m-10 rounded border-solid border-2 border-white text-white text-xl"
+      >
+        Add Contact
+      </a>
     </main>
   </body>
 </html>
