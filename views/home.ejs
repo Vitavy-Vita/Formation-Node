@@ -10,8 +10,8 @@
     </head>
     <main class="text-center">
       <% for(const contact of results) {%>
-      <a href="<%= contact.name %>" class="block text-blue-300 text-xl m-5">
-        <%= contact.name %> <%= contact.firstName %>
+      <a href="/contact/<%= contact.name %>" class="block text-blue-300 text-xl m-5">
+        <%= contact.name %> <%= contact.firstname %>
       </a>
 
       <% } %>

@@ -18,31 +18,35 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 const csvFilePath = path.join(__dirname, "public", "contacts.csv");
-const data = fs.readFileSync(csvFilePath, "utf-8");
+
+fs.createReadStream(csvFilePath)
+  .pipe(csv.parse({ columns: true, trim: true }))
+  .on("data", (data) => results.push(data))
+  .on("end", () => {
+    console.log("CSV FILE OK");
+
+  });
 
 app.get("/", (req, res) => {
-  // const contacts = csv.parse(data);
-  fs.createReadStream("contacts.csv")
-    .pipe(csv.parse({ columns: true }))
-    .on("data", (data) => results.push(data))
-    .on("end", () => {
-      console.log("CSV FILE OK");
-    });
-  console.log(results);
   res.render("home", { results });
 });
+
 app.get("/add", (req, res) => {
   res.render("add");
 });
 
-app.get("/:name", (req, res) => {
-  const contacts = csv.parse(data);
-  const params = req.params;
+app.get("/contact/:name", (req, res) => {
+  csv.parse(
+    fs.readFileSync(csvFilePath, "utf-8"),
+    { columns: true, trim: true },
+    (err, data) => {
+      const params = req.params;
 
-  const contactDetails = contacts.find((el) => el.name === params.name);
-  if (!contactDetails) res.render("error");
-
-  res.render("detail", { detail: contactDetails });
+      const item = data.find((el)=> el.name === params.name)
+      // console.log(rows);
+      res.render("detail", { detail: item });
+    }
+  );
 });
 
 module.exports = app;
