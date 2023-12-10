@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My Address Book || details</title>
+    <title>My Address Book || Who dis</title>
     <link rel="stylesheet" href="/stylesheets/output.css" />
   </head>
   <body class="">
-    <head>
+    <header>
       <h1 class="text-blue-500 text-4xl text-center my-5">
-        <%= detail.civility %> <%= detail.name %> <%= detail.firstName %>
+        <%= detail.civility %> <%= detail.name %> <%= detail.firstname %>
       </h1>
-    </head>
+    </header>
     <main class="text-center">
       <div
         class="text-blue-300 text-xl flex flex-col justify-center items-center m-5"
       >
-        <p><%= detail.birthday %></p>
+        <p id="dateDisplay"><%= detail.birthday %></p>
         <p><%= detail.telephone %></p>
         <p><%= detail.email %></p>
       </div>
@@ -25,5 +25,6 @@
         >Go Back</a
       >
     </main>
+    <script src="/public/javascripts/dateFormat.js"></script>
   </body>
 </html>

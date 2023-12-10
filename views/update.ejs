@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Address Book || Update Contact</title>
+    <link rel="stylesheet" href="/stylesheets/output.css" />
+  </head>
+  <body class="">
+    <head>
+      <h1 class="text-blue-500 text-4xl text-center my-5">My Address Book</h1>
+    </head>
+    <main class="flex justify-center">
+      <form
+        action="/contact/update/<%= update.name %>"
+        method="post"
+        class="bg-blue-300 text-white text-xl flex flex-col justify-center items-start px-20 rounded"
+      >
+        <label for="civility">Civility:</label>
+        <select
+          type="select"
+          id="civility"
+          class="rounded text-blue-400"
+          name="civility"
+        >
+          <option value="Select">Select your gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Undefined">Undefined</option>
+        </select>
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          class="rounded text-blue-400"
+          name="name"
+        />
+        <label for="FirstName">FirstName:</label>
+        <input
+          type="text"
+          id="FirstName"
+          class="rounded text-blue-400"
+          name="firstname"
+        />
+
+        <label for="PhoneNumber">PhoneNumber:</label>
+        <input
+          pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}"
+          type="tel"
+          id="PhoneNumber"
+          class="rounded text-blue-400"
+          name="telephone"
+        />
+        <label for="Email">Email:</label>
+        <input
+          type="email"
+          id="Email"
+          class="rounded text-blue-400"
+          name="email"
+        />
+        <label for="dateInput">Birthday:</label>
+        <input
+          type="date"
+          id="dateInput"
+          oninput="displayFormattedDate()"
+          name="birthday"
+          class="rounded text-blue-400"
+        />
+        
+        <button
+          class="bg-blue-300 p-2 px-6 m-5 rounded border-solid border-2 border-white text-white text-xl"
+        >
+          Save
+        </button>
+        <a
+          href="/"
+          class="bg-blue-300 px-4 p-2 m-5 rounded border-solid border-2 border-white text-white text-xl"
+          >Go Back</a
+        >
+      </form>
+    </main>
+    <div class="flex flex-row gap-64 justify-center items-center my-5">
+      <!-- <button class="px-6 bg-blue-300 p-2 rounded text-white text-xl">Save</button> -->
+      <!-- <button class="px-4 bg-blue-300 p-2 rounded text-white text-xl" >Remove</button> -->
+    </div>
+    <script src="/public/javascripts/dateFormat.js"></script>
+  </body>
+</html>

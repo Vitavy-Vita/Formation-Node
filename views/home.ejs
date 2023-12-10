@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My Address Book</title>
+    <title>My Address Book || HomePage</title>
     <link rel="stylesheet" href="/stylesheets/output.css" />
   </head>
   <body class="">
@@ -10,18 +10,27 @@
     </head>
     <main class="text-center">
       <% for(const contact of results) {%>
-      <a href="/contact/<%= contact.name %>" class="block text-blue-300 text-xl m-5">
-        <%= contact.name %> <%= contact.firstname %>
-      </a>
-
+      <div class="flex justify-center items-center">
+        <a
+          href="/contact/<%= contact.name %>"
+          class="block text-blue-300 text-xl m-5"
+        >
+          <%= contact.name %> <%= contact.firstname %>
+        </a>
+        <a href="/contact/update/<%= contact.name %>"> ✏️</a>
+        <form action="/contact/delete/<%= contact.name %> " method="post">
+          <button type="submit">❌</button>
+        </form>
+      </div>
       <% } %>
 
       <a
-        href="/add"
+        href="/contact/add"
         class="bg-blue-300 p-2 px-6 m-10 rounded border-solid border-2 border-white text-white text-xl"
       >
         Add Contact
       </a>
     </main>
+    <script src="/public/javascripts/dateFormat.js"></script>
   </body>
 </html>
