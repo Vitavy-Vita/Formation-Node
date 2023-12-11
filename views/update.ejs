@@ -6,81 +6,91 @@
   </head>
   <body class="">
     <head>
-      <h1 class="text-blue-500 text-4xl text-center my-5">My Address Book</h1>
+      <h1 class="text-blue-500 text-5xl my-3 w-4/12 mx-auto text-center p-5">
+        My Address Book
+      </h1>
     </head>
-    <main class="flex justify-center">
+    <main
+      class="bg-blue-300 bg-cover bg-center min-h-auto mx-auto w-3/4 p-10 rounded-xl"
+    >
       <form
         action="/contact/update/<%= update.name %>"
         method="post"
-        class="bg-blue-300 text-white text-xl flex flex-col justify-center items-start px-20 rounded"
+        class="bg-blue-300 text-white text-xl flex justify-around items-center px-20 rounded mt-20"
       >
-        <label for="civility">Civility:</label>
-        <select
-          type="select"
-          id="civility"
-          class="rounded text-blue-400"
-          name="civility"
-        >
-          <option value="Select">Select your gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Undefined">Undefined</option>
-        </select>
-        <label for="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          class="rounded text-blue-400"
-          name="name"
-        />
-        <label for="FirstName">FirstName:</label>
-        <input
-          type="text"
-          id="FirstName"
-          class="rounded text-blue-400"
-          name="firstname"
-        />
-
-        <label for="PhoneNumber">PhoneNumber:</label>
-        <input
-          pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}"
-          type="tel"
-          id="PhoneNumber"
-          class="rounded text-blue-400"
-          name="telephone"
-        />
-        <label for="Email">Email:</label>
-        <input
-          type="email"
-          id="Email"
-          class="rounded text-blue-400"
-          name="email"
-        />
-        <label for="dateInput">Birthday:</label>
-        <input
-          type="date"
-          id="dateInput"
-          oninput="displayFormattedDate()"
-          name="birthday"
-          class="rounded text-blue-400"
-        />
-        
+        <div class="flex flex-col w-2/5">
+          <label for="civility">Civility:</label>
+          <select
+            type="select"
+            id="civility"
+            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic"
+            name="civility"
+          >
+            <option value="Select">Select your gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Undefined">Undefined</option>
+          </select>
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic"
+            name="name"
+            placeholder="Name..."
+          />
+          <label for="FirstName">FirstName:</label>
+          <input
+            type="text"
+            id="FirstName"
+            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic"
+            name="firstname"
+            placeholder="First name..."
+          />
+        </div>
+        <div class="flex flex-col w-2/5 pl-5">
+          <label for="PhoneNumber">PhoneNumber:</label>
+          <input
+            pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}"
+            type="tel"
+            id="PhoneNumber"
+            class="rounded text-blue-400 py-3 placeholder:text-blue-300 placeholder:italic pl-3 my-3"
+            name="telephone"
+            placeholder="xx-xx-xx-xx-xx"
+          />
+          <label for="Email">Email:</label>
+          <input
+            type="email"
+            id="Email"
+            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic"
+            name="email"
+            placeholder="Please enter a valid email..."
+          />
+          <label for="dateInput">Birthday:</label>
+          <input
+            type="date"
+            id="dateInput"
+            oninput="displayFormattedDate()"
+            name="birthday"
+            class="rounded text-blue-400 py-3 pl-3 my-3"
+          />
+        </div>
+      
+        <div class="flex flex-col justify-around items-center  mx-auto">
         <button
-          class="bg-blue-300 p-2 px-6 m-5 rounded border-solid border-2 border-white text-white text-xl"
+          class="bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 mt-3 w-40 rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl"
         >
           Save
         </button>
         <a
           href="/"
-          class="bg-blue-300 px-4 p-2 m-5 rounded border-solid border-2 border-white text-white text-xl"
+          class="inline-block bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 w-40 mt-2 text-center rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl"
           >Go Back</a
         >
-      </form>
+      </div>
+    </form>
     </main>
-    <div class="flex flex-row gap-64 justify-center items-center my-5">
-      <!-- <button class="px-6 bg-blue-300 p-2 rounded text-white text-xl">Save</button> -->
-      <!-- <button class="px-4 bg-blue-300 p-2 rounded text-white text-xl" >Remove</button> -->
-    </div>
+
     <script src="/public/javascripts/dateFormat.js"></script>
   </body>
 </html>

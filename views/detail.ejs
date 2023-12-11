@@ -3,27 +3,59 @@
   <head>
     <title>My Address Book || Who dis</title>
     <link rel="stylesheet" href="/stylesheets/output.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
-  <body class="">
+  <body class=" ">
     <header>
-      <h1 class="text-blue-500 text-4xl text-center my-5">
-        <%= detail.civility %> <%= detail.name %> <%= detail.firstname %>
+      <h1 class="text-blue-500 text-5xl my-3 w-4/12 mx-auto text-center p-5">
+        <%= detail.name %> <%= detail.firstname %>
       </h1>
     </header>
-    <main class="text-center">
+    <main
+      class="text-center bg-blue-300 bg-cover bg-center min-h-auto mx-auto w-3/4 p-10 rounded-xl"
+    >
+    <div class="flex justify-around items-center">
       <div
-        class="text-blue-300 text-xl flex flex-col justify-center items-center m-5"
+        class="text-blue-300 text-xl flex flex-col justify-center items-start m-5"
       >
-        <p id="dateDisplay"><%= displayFormattedDate(detail.birthday) %></p>
-        <p><%= detail.telephone %></p>
-        <p><%= detail.email %></p>
+        <p class="text-blue-300 bg-white w-96 text-start pl-3 p-3 m-3 rounded ">
+          <i class="fa-solid fa-venus-mars"></i> <%= detail.civility %>
+        </p>
+        <p class="text-blue-300 bg-white w-96 text-start pl-3 p-3 m-3 rounded">
+          <i class="fa-solid fa-calendar-days"></i> <%= displayFormattedDate(detail.birthday) %>
+        </p>
       </div>
-
-      <a
-        href="/"
-        class="bg-blue-300 px-4 p-2 m-5 rounded border-solid border-2 border-white text-white text-xl"
-        >Go Back</a
+      <div
+        class="text-blue-300 text-xl flex flex-col justify-center items-start m-5"
       >
+        <p class="text-blue-300 bg-white w-96 text-start pl-3 p-3 m-3 rounded">
+          <i class="fa-solid fa-phone"></i> <%= detail.telephone %>
+        </p>
+        <p class="text-blue-300 bg-white w-96 text-start pl-3 p-3 m-3 rounded">
+          <i class="fa-solid fa-envelope"></i> <%= detail.email %>
+        </p>
+      </div>
+    </div>
+      <div class="flex justify-around items-center w-5/6 mx-auto">
+        <form action="/contact/delete/<%= detail.name %> " method="post">
+          <button
+            type="submit"
+            class="bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 mt-3 w-40 rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl"
+          >
+            Delete
+          </button>
+        </form>
+        <a
+          href="/contact/update/<%= detail.name %> "
+          class="inline-block bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 w-40 mt-2 text-center rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl"
+          >Update</a
+        >
+        <a
+          href="/"
+          class="inline-block bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 w-40 mt-2 text-center rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl"
+          >Go Back</a
+        >
+      </div>
     </main>
     <script src="/public/javascripts/dateFormat.js"></script>
   </body>

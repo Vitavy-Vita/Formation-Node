@@ -2,12 +2,13 @@ const fs = require("fs");
 const csv = require("csv-parse");
 const path = require("path");
 const { stringify } = require("csv-stringify");
-const { filePath } = require("../app");
-const {displayFormattedDate} = require('../public/javascripts/dateFormat')
+
+const { displayFormattedDate } = require("../public/javascripts/dateFormat");
+
 const results = [];
 
 exports.getOverview = (req, res) => {
-  res.render("home", { results: req.csvResults });
+  res.render("home", { results: req.csvResults, displayFormattedDate });
 };
 exports.getViewAddContact = (req, res) => {
   res.render("add");
@@ -130,7 +131,7 @@ exports.getContact = (req, res) => {
 
       const item = data.find((el) => el.name === params.name);
 
-      res.render("detail", { detail: item,  displayFormattedDate });
+      res.render("detail", { detail: item, displayFormattedDate });
     }
   );
 };
