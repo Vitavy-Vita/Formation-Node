@@ -4,16 +4,20 @@ const contactControllers = require("../controllers/contactControllers");
 const router = express.Router();
 router.get("/", contactControllers.getOverview);
 
-router.get("/contact/add", contactControllers.getViewAddContact);
+router
+  .route("/contact/add")
+  .get(contactControllers.getViewAddContact)
+  .post(contactControllers.postCreateContact);
 
-router.post("/contact/add", contactControllers.postCreateContact);
+router
+  .route("/contact/update/:name")
+  .get(contactControllers.getViewUpdateContact)
+  .post(contactControllers.postUpdateContact);
 
-router.get("/contact/update/:name", contactControllers.getViewUpdateContact);
+router
+  .route("/contact/delete/:name")
+  .post(contactControllers.postDeleteContact);
 
-router.post("/contact/update/:name", contactControllers.postUpdateContact);
-
-router.post("/contact/delete/:name", contactControllers.postDeleteContact);
-
-router.get("/contact/:name", contactControllers.getContact);
+router.route("/contact/:name").get(contactControllers.getContact);
 
 module.exports = router;

@@ -17,18 +17,28 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-const csvFilePath = path.join(__dirname, "public", "contacts.csv");
-
+// scope issue, cant make it reach
+const csvFilePath = ["public", "contacts.csv"];
 app.use((req, res, next) => {
   const results = [];
-  fs.createReadStream(csvFilePath)
-    .pipe(csv.parse({ columns: true, trim: true }))
-    .on("data", (data) => results.push(data))
-    .on("end", () => {
-      req.csvResults = results;
-      next();
-    });
+  // fs.createReadStream(csvFilePath)
+  try {
+    fs.createReadStream(path.join(...csvFilePath))
+      .pipe(csv.parse({ columns: true, trim: true }))
+      .on("data", (data) => results.push(data))
+      .on("end", () => {
+        req.filePath = [...csvFilePath];
+        req.csvResults = results;
+        next();
+      });
+  } catch (error) {
+
+    res.render("Contact-not-found", { error });
+  }
 });
 
 app.use("/", contactRouter);
+app.use('/*', (req,res)=>{
+  res.render('error')
+})
 module.exports = app;

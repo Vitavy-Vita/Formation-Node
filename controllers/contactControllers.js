@@ -1,20 +1,21 @@
 const fs = require("fs");
 const csv = require("csv-parse");
-
+const path = require("path");
 const { stringify } = require("csv-stringify");
+const { filePath } = require("../app");
+const {displayFormattedDate} = require('../public/javascripts/dateFormat')
 const results = [];
 
-
 exports.getOverview = (req, res) => {
-  res.render("home", { results });
+  res.render("home", { results: req.csvResults });
 };
 exports.getViewAddContact = (req, res) => {
-  res.render("add", {results});
+  res.render("add");
 };
 
 exports.getViewUpdateContact = (req, res) => {
   csv.parse(
-    fs.readFileSync(csvFilePath, "utf-8"),
+    fs.readFileSync(path.join(...req.filePath), "utf-8"),
     { columns: true, trim: true },
     (err, data) => {
       const params = req.params;
@@ -27,7 +28,8 @@ exports.getViewUpdateContact = (req, res) => {
 };
 exports.postCreateContact = (req, res) => {
   const newContact = req.body;
-  const writeStream = fs.createWriteStream(csvFilePath);
+
+  const writeStream = fs.createWriteStream(path.join(...req.filePath));
 
   if (!newContact) {
     return res.send("Please make sure to fill all inputs");
@@ -49,7 +51,7 @@ exports.postCreateContact = (req, res) => {
 
 exports.postUpdateContact = (req, res) => {
   csv.parse(
-    fs.readFileSync(csvFilePath, "utf-8"),
+    fs.readFileSync(path.join(...req.filePath), "utf-8"),
     { columns: true, trim: true },
     (err, data) => {
       const params = req.params;
@@ -66,7 +68,7 @@ exports.postUpdateContact = (req, res) => {
       }
       data[indexContactToUpdate] === contactToUpdate;
 
-      const writeStream = fs.createWriteStream(csvFilePath);
+      const writeStream = fs.createWriteStream(path.join(...req.filePath));
       stringify(data, { header: true }, (err, csvData) => {
         if (err) {
           console.error(err);
@@ -86,7 +88,7 @@ exports.postUpdateContact = (req, res) => {
 
 exports.postDeleteContact = (req, res) => {
   csv.parse(
-    fs.readFileSync(csvFilePath, "utf-8"),
+    fs.readFileSync(path.join(...req.filePath), "utf-8"),
     { columns: true, trim: true },
     (err, data) => {
       const params = req.params;
@@ -100,7 +102,7 @@ exports.postDeleteContact = (req, res) => {
 
       data.splice(contactToDeleteIndex, 1);
 
-      const writeStream = fs.createWriteStream(csvFilePath);
+      const writeStream = fs.createWriteStream(path.join(...req.filePath));
       stringify(data, { header: true }, (err, csvData) => {
         if (err) {
           console.error(err);
@@ -121,14 +123,14 @@ exports.postDeleteContact = (req, res) => {
 
 exports.getContact = (req, res) => {
   csv.parse(
-    fs.readFileSync(csvFilePath, "utf-8"),
+    fs.readFileSync(path.join(...req.filePath), "utf-8"),
     { columns: true, trim: true },
     (err, data) => {
       const params = req.params;
 
       const item = data.find((el) => el.name === params.name);
 
-      res.render("detail", { detail: item });
+      res.render("detail", { detail: item,  displayFormattedDate });
     }
   );
 };
