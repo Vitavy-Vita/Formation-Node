@@ -7,7 +7,7 @@
   <body class="">
     <head>
       <h1 class="text-blue-500 text-5xl my-3 w-4/12 mx-auto text-center p-5">
-        My Address Book
+        Update Contact
       </h1>
     </head>
     <main
@@ -23,7 +23,7 @@
           <select
             type="select"
             id="civility"
-            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic"
+            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic focus:outline-blue-500"
             name="civility"
           >
             <option value="Select">Select your gender</option>
@@ -35,7 +35,7 @@
           <input
             type="text"
             id="name"
-            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic"
+            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic focus:outline-blue-500"
             name="name"
             placeholder="Name..."
           />
@@ -43,7 +43,7 @@
           <input
             type="text"
             id="FirstName"
-            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic"
+            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic focus:outline-blue-500"
             name="firstname"
             placeholder="First name..."
           />
@@ -54,7 +54,7 @@
             pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}"
             type="tel"
             id="PhoneNumber"
-            class="rounded text-blue-400 py-3 placeholder:text-blue-300 placeholder:italic pl-3 my-3"
+            class="rounded text-blue-400 py-3 placeholder:text-blue-300 placeholder:italic pl-3 my-3 focus:outline-blue-500"
             name="telephone"
             placeholder="xx-xx-xx-xx-xx"
           />
@@ -62,7 +62,7 @@
           <input
             type="email"
             id="Email"
-            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic"
+            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic focus:outline-blue-500"
             name="email"
             placeholder="Please enter a valid email..."
           />
@@ -72,13 +72,13 @@
             id="dateInput"
             oninput="displayFormattedDate()"
             name="birthday"
-            class="rounded text-blue-400 py-3 pl-3 my-3"
+            class="rounded text-blue-400 py-3 pl-3 my-3 focus:outline-blue-500"
           />
         </div>
       
         <div class="flex flex-col justify-around items-center  mx-auto">
         <button
-          class="bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 mt-3 w-40 rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl"
+          class="bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 mt-3 w-40 rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl "
         >
           Save
         </button>
