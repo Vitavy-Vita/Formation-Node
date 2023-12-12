@@ -25,8 +25,3 @@ const formatDate = (inputDate) => {
   }
 };
 
-exports.displayFormattedDate = (dateInputValue) => {
-  const formattedDate = formatDate(dateInputValue);
-
-  return formattedDate;
-};

@@ -37,7 +37,7 @@
             id="name"
             class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic focus:outline-blue-500"
             name="name"
-            placeholder="Name..."
+            placeholder="<%= update.name %>"
           />
           <label for="FirstName">FirstName:</label>
           <input
@@ -45,7 +45,7 @@
             id="FirstName"
             class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic focus:outline-blue-500"
             name="firstname"
-            placeholder="First name..."
+            placeholder="<%= update.firstname %>"
           />
         </div>
         <div class="flex flex-col w-2/5 pl-5">
@@ -56,7 +56,7 @@
             id="PhoneNumber"
             class="rounded text-blue-400 py-3 placeholder:text-blue-300 placeholder:italic pl-3 my-3 focus:outline-blue-500"
             name="telephone"
-            placeholder="xx-xx-xx-xx-xx"
+            placeholder="<%= update.telephone %>"
           />
           <label for="Email">Email:</label>
           <input
@@ -64,15 +64,15 @@
             id="Email"
             class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic focus:outline-blue-500"
             name="email"
-            placeholder="Please enter a valid email..."
+            placeholder="<%= update.email %>"
           />
           <label for="dateInput">Birthday:</label>
           <input
             type="date"
             id="dateInput"
-            oninput="displayFormattedDate()"
             name="birthday"
             class="rounded text-blue-400 py-3 pl-3 my-3 focus:outline-blue-500"
+            placeholder="<%= update.birthday %>"
           />
         </div>
       
@@ -92,5 +92,9 @@
     </main>
 
     <script src="/public/javascripts/dateFormat.js"></script>
+    <script >
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('dateInput').setAttribute('max', today)
+    </script>
   </body>
 </html>
