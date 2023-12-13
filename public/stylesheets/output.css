@@ -885,16 +885,6 @@ video {
   --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
 }
 
-.focus\:invalid\:border-pink-500:invalid:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(236 72 153 / var(--tw-border-opacity));
-}
-
-.focus\:invalid\:border-red-500:invalid:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity));
-}
-
 .focus\:invalid\:bg-red-500:invalid:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
@@ -917,9 +907,4 @@ video {
 
 .focus\:invalid\:outline-red-500:invalid:focus {
   outline-color: #ef4444;
-}
-
-.focus\:invalid\:ring-pink-500:invalid:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(236 72 153 / var(--tw-ring-opacity));
 }

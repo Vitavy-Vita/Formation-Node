@@ -25,3 +25,7 @@ const formatDate = (inputDate) => {
   }
 };
 
+exports.displayFormattedDate = (inputDateValue) =>{
+  const displayDate = formatDate(inputDateValue)
+  return displayDate
+}
