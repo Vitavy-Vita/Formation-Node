@@ -71,30 +71,31 @@
             type="date"
             id="dateInput"
             name="birthday"
+            onchange="today()"
             class="rounded text-blue-400 py-3 pl-3 my-3 focus:outline-blue-500"
             placeholder="<%= update.birthday %>"
           />
         </div>
-      
-        <div class="flex flex-col justify-around items-center  mx-auto">
-        <button
-          class="bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 mt-3 w-40 rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl "
-        >
-          Save
-        </button>
-        <a
-          href="/"
-          class="inline-block bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 w-40 mt-2 text-center rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl"
-          >Go Back</a
-        >
-      </div>
-    </form>
+
+        <div class="flex flex-col justify-around items-center mx-auto">
+          <button
+            class="bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 mt-3 w-40 rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl"
+          >
+            Save
+          </button>
+          <a
+            href="/"
+            class="inline-block bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 w-40 mt-2 text-center rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl"
+            >Go Back</a
+          >
+        </div>
+      </form>
     </main>
 
     <script src="/public/javascripts/dateFormat.js"></script>
-    <script >
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById('dateInput').setAttribute('max', today)
+    <script>
+      const todayDate = new Date().toISOString().split("T")[0];
+      document.getElementById("dateInput").setAttribute("max", todayDate);
     </script>
   </body>
 </html>
