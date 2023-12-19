@@ -77,7 +77,6 @@
           <input
             type="date"
             id="dateInput"
-            onchange="today()"
             name="birthday"
             class="rounded text-blue-400 py-3 pl-3 my-3 focus:outline-blue-500 focus:invalid:outline-red-500 focus:invalid:text-red-500 focus:invalid:placeholder-red-500"
           />
@@ -99,7 +98,7 @@
       </form>
     </main>
     <div class="flex flex-row gap-64 justify-center items-center my-5"></div>
-    <script src="/public/javascripts/preventDate.js"></script>
+
     <script>
       const todayDate = new Date().toISOString().split("T")[0];
       document.getElementById("dateInput").setAttribute("max", todayDate);
